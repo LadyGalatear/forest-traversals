@@ -200,7 +200,21 @@ public class TreeProblems {
    
   */
   public static <T> int maxDepth(Node<T> root) {
-    return -1;
+    int max = 0;
+
+    if (root == null) {
+      return max;
+    }
+
+    for (Node<T> child : root.children) {
+      int depth = maxDepth(child);
+
+      if (depth > max) {
+        max = depth;
+      }
+    }
+
+    return max + 1;
   }
 
   /*
