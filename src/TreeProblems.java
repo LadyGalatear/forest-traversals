@@ -160,6 +160,24 @@ public class TreeProblems {
    Hint: No recursion needed! Think about how you would do this by hand.
   */
   public static <T> T findRoot(Map<T, List<T>> tree) {
+    if (tree == null) {
+      return null;
+    }
+
+    for (T candidate : tree.keySet()) {
+      boolean hasParent = false;
+
+      for (List<T> child : tree.values()) {
+        if (child.contains(candidate)) {
+          hasParent = true;
+        }
+      }
+
+      if (!hasParent) {
+        return candidate;
+      }
+    }
+
     return null;
   }
 
